@@ -1,1 +1,2 @@
-VUE_APP_BASE_API = '/api'
+VUE_APP_BASE_API=https://api.jiahui.com/mgt
+VUE_APP_RUN_ENV=production

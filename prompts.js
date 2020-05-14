@@ -6,22 +6,6 @@
  */
 module.exports = [
   {
-    name: 'language',
-    type: 'list',
-    message: 'Choose whether your develop language is a JS or TS(default:JS)',
-    choices: [
-      {
-        name: 'JS',
-        value: 'js'
-      },
-      {
-        name: 'TS',
-        value: 'ts'
-      }
-    ],
-    default: 'js'
-  },
-  {
     name: 'application',
     type: 'list',
     message: 'Choose whether your app is a PC or a mobile(default:mobile)',
@@ -33,10 +17,6 @@ module.exports = [
       {
         name: 'mobile',
         value: 'mobile'
-      },
-      {
-        name: 'H5离线包',
-        value: 'offline'
       }
     ],
     default: 'mobile'
@@ -49,18 +29,6 @@ module.exports = [
       {
         name: 'Element UI',
         value: 'element-ui'
-      },
-      {
-        name: 'iView',
-        value: 'iview'
-      },
-      {
-        name: 'ant-design-vue',
-        value: 'ant'
-      },
-      {
-        name: 'h_ui',
-        value: 'hui'
       },
       {
         name: 'none',

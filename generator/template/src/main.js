@@ -1,63 +1,43 @@
-<%_ if (options.application === 'mobile' || options.application === 'offline') { _%>
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import 'lib-flexible';
-<%_ } _%>
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router/.invoke/router.js';
-import './router/router.interceptor';
-import './components/global';
-import './icons';
-import './filters';
-import './services';
-<%_ if (options['ui-framework'] === 'element-ui') { _%>
-import './vendor/element';
-<%_ } else if (options['ui-framework'] === 'iview') { _%>
-import './vendor/iview';
-<%_ } else if (options['ui-framework'] === 'ant') { _%>
-import './vendor/ant';
-<%_ } _%>
-<%_ if (options.application === 'offline') { _%>
-import {isLightOS, nativeReady} from 'native-bridge-methods';
-import LightSDK from 'light-sdk/dist/index.umd';
+import Vue from 'vue'
+import App from './App.vue'
+import createRouter from './router'
+import store from './store'
 
-window.LightSDK = LightSDK;
-<%_ } _%>
+import './plugins/element'
+import './plugins/permission'
+import './plugins/sanitizeHTML'
+import './configs/debugger'
 
-import './assets/less/app.less';
+Vue.config.productionTip = false
 
-/* eslint-disable */
-Vue.config.productionTip = process.env.NODE_ENV === 'production';
+let instance = null
+let router = null
 
-<%_ if (options.application === 'offline') { _%>
-if (isLightOS()) {
-  nativeReady().then(() => {
-    new Vue({
-      el: '#app',
-      router,
-      // use Runtime-only
-      // https://vuejs.org/v2/guide/installation.html
-      render: (h) => h(App),
-    });
-  });
-} else {
-  /* eslint-disable no-new */
-  new Vue({
-    el: '#app',
+function render () {
+  router = createRouter()
+  instance = new Vue({
     router,
-    // use Runtime-only
-    // https://vuejs.org/v2/guide/installation.html
-    render: (h) => h(App),
-  });
+    store,
+    render: h => h(App)
+  }).$mount('#app')
 }
-<%_ } else { _%>
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  // use Runtime-only
-  // https://vuejs.org/v2/guide/installation.html
-  render: (h) => h(App)
-});
-<%_ } _%>
+
+if (!window.__POWERED_BY_QIANKUN__) {
+  render()
+}
+
+export async function bootstrap () {
+  console.log(process.env.VUE_APP_NAME, 'app bootstraped')
+}
+
+export async function mount (props) {
+  // console.log(process.env.VUE_APP_NAME, 'props from main framework', props)
+  render()
+}
+
+export async function unmount () {
+  instance.$destroy()
+  instance = null
+  router = null
+  createRouter.$router = null
+}

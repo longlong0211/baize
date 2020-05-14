@@ -1,0 +1,2 @@
+VUE_APP_BASE_API=http://uat-api.jiahui.com/mgt
+VUE_APP_RUN_ENV=uat
