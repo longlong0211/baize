@@ -7,11 +7,12 @@ process.env.VUE_APP_NAME = name
 process.env.VUE_APP_VERSION = version
 process.env.VUE_APP_BUILD_TIME = moment().format('YYYY-M-D HH:mm:ss')
 
-const { tag, branch, sha } = require('git-repo-info')()
+const { tag, branch, sha = '', committerDate } = require('git-repo-info')()
 process.env.VUE_APP_GIT_INFO = JSON.stringify({
   tag,
   branch,
-  sha: sha.slice(0, 7)
+  sha: sha.slice(0, 7),
+  committerDate: committerDate && moment(committerDate).format('YYYY-M-D HH:mm:ss')
 })
 
 module.exports = {
@@ -42,6 +43,7 @@ module.exports = {
     // historyApiFallback: true,
     disableHostCheck: true,
     compress: true, // 服务器返回浏览器的时候是否启动gzip压缩
+    host: '0.0.0.0',
     hot: true, // 热加载
     open: true,
     inline: true, // 打包后加入一个websocket客户端
