@@ -1,4 +1,5 @@
 # baize
+
 结合 vue-cli3 的 preset 搭建基于 git repo 的前端项目模板
 
 ## 快速开始
@@ -24,6 +25,7 @@ vue create --preset bitbucket:username/repo --clone my-project
 ```
 
 ## 文档
+
 ```bash
 # 本地预览
 npm run docs:dev
@@ -32,7 +34,7 @@ npm run docs:dev
 npm run docs:build
 ```
 
-## 待办
+<!-- ## 待办
+
 - [ ] 新增**多页**模板
-- [ ] axios retry 特性
-- [x] 新增**TS**模板
+- [ ] axios retry 特性 -->

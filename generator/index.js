@@ -1,6 +1,4 @@
 module.exports = (api, options, rootOptions) => {
-  const utils = require('./utils')(api);
-
   // 命令
   api.extendPackage({
     scripts: {
@@ -139,8 +137,5 @@ module.exports = (api, options, rootOptions) => {
   // writeFileTree 函数不写文件直接退出，这样 vue-cli3 在写 README.md 时会直接跳过
   api.onCreateComplete(() => {
     process.env.VUE_CLI_SKIP_WRITE = true;
-    if (options.application === 'mobile') {
-      utils.deleteDir('./src/vendor');
-    }
   });
 };
