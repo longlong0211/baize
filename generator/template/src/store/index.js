@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Storage from '../helpers/Storage'
+import setting from '../setting'
 
 const req = context => context.keys().map(key => ({ moduleName: key, ...context(key) }))
 const modules = req(require.context('./modules/', true, /\.js$/))
@@ -14,7 +15,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userInfo: Storage.local.userInfo || {}
+    userInfo: Storage.local.userInfo || {},
+    setting
   },
   mutations: {
     setUserInfo (state, userInfo) {

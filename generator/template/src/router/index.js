@@ -101,7 +101,6 @@ export default function createRouter () {
   const isIgnoreValidate = [...isNotHasMenu, 'Index']
   router.beforeEach((to, from, next) => {
     if (isIgnoreValidate.includes(to.name)) return next()
-    console.log(1, to.path)
     const permissions = Storage.local[PERMISSIONS]
     if (!permissions.includes(to.path)) return next({ name: '403' })
     next()

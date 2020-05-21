@@ -16,3 +16,4 @@ gitInfo.branch && $console.log(`Branch   :%c ${gitInfo.branch}`, 'color:#0072c6'
 gitInfo.sha && $console.log(`Sha      :%c ${gitInfo.sha}`, 'color:#0072c6')
 $console.log(`Build  at:%c ${process.env.VUE_APP_BUILD_TIME}`, 'color:#0072c6')
 $console.groupEnd()
+

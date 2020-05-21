@@ -27,6 +27,9 @@ module.exports = {
     }
   },
   configureWebpack: {
+    performance: {
+      hints: false
+    },
     output: {
       // 把子应用打包成 umd 库格式
       library: `${name}-[name]`,
@@ -38,6 +41,17 @@ module.exports = {
     // 设置别名
     config.resolve.alias
       .set('@api', resolve('src/api'))
+
+    // 不需要UEditor时，禁止copy到目标文件
+    const { ueditor } = require('./src/setting')
+    if (ueditor && !ueditor.enable) {
+      config
+        .plugin('copy')
+        .tap(arg => {
+          arg[0][0].ignore.push('lib/UEditor/**/*')
+          return arg
+        })
+    }
   },
   devServer: {
     // historyApiFallback: true,
