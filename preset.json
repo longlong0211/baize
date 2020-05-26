@@ -1,8 +1,8 @@
 {
   "useConfigFiles": true,
-  "packageManager": "yarn",
-  "useTaobaoRegistry": true,
-  "cssPreprocessor": "less",
+  "packageManager": "npm",
+  "useTaobaoRegistry": false,
+  "cssPreprocessor": "sass",
   "router": false,
   "vuex": false,
   "routerHistoryMode": false,

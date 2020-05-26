@@ -83,6 +83,12 @@ module.exports = (api, options, rootOptions) => {
         "path": "./node_modules/cz-conventional-changelog"
       }
     },
+    "lint-staged": {
+      "src/**/**.{js,vue}": [
+        "vue-cli-service lint --fix",
+        "git add"
+      ]
+    }
   })
 
   // postcss
@@ -126,12 +132,25 @@ module.exports = (api, options, rootOptions) => {
       .forEach(path => delete files[path]);
   });
 
-  if (options['ui-framework'] === 'element-ui') {
-    require('./element.js')(api, options);
-  }
+  // if (options['ui-framework'] === 'element-ui') {
+  //   require('./element.js')(api, options);
+  // }
 
-  // 公共基础目录和文件
-  api.render('./template');
+  // console.log(1111, api)
+  // console.log(222, options)
+
+  // 写入模版
+  if (options.application === 'pc') { // pc
+    switch (options.template) {
+      case 'mgt':
+        api.render('./template-mgt');
+        break;
+      default:
+        break;
+    }
+  } else { // mobile
+
+  }
 
   // 屏蔽 generator 之后的文件写入操作
   // writeFileTree 函数不写文件直接退出，这样 vue-cli3 在写 README.md 时会直接跳过
