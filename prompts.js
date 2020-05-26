@@ -49,34 +49,34 @@ module.exports = [
     when: answers => answers.application === 'pc',
     default: 'none'
   },
-  {
-    name: 'modules',
-    type: 'checkbox',
-    message: '选择包含的模块',
-    choices: [
-      {
-        name: 'Element UI',
-        value: 'element-ui'
-      }
-    ],
-    when: answers => answers.application === 'pc' && answers.template === 'none',
-    default: 'none'
-  // },
   // {
-  //   name: 'ui-framework',
-  //   type: 'list',
-  //   message: 'choice UI Framework(default:none)',
+  //   name: 'modules',
+  //   type: 'checkbox',
+  //   message: '选择包含的模块',
   //   choices: [
-  //     {
-  //       name: 'none',
-  //       value: 'none'
-  //     },
   //     {
   //       name: 'Element UI',
   //       value: 'element-ui'
   //     }
   //   ],
-  //   when: answers => answers.application === 'pc',
-  //   default: 'none'
+  //   when: answers => answers.application === 'pc' && answers.template === 'none',
+  //   default: ['element-ui']
+  // },
+  {
+    name: 'ui-framework',
+    type: 'list',
+    message: 'choice UI Framework(default:none)',
+    choices: [
+      {
+        name: 'none',
+        value: 'none'
+      },
+      {
+        name: 'Element UI',
+        value: 'element-ui'
+      }
+    ],
+    when: answers => answers.application === 'pc',
+    default: 'none'
   }
 ];
