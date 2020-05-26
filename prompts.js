@@ -79,4 +79,4 @@ module.exports = [
     when: answers => answers.application === 'pc',
     default: 'none'
   }
-];
+]
