@@ -44,6 +44,10 @@ module.exports = [
       {
         name: 'Mgt管理后台子应用',
         value: 'mgt'
+      },
+      {
+        name: 'Mgt2管理后台子应用',
+        value: 'mgt2'
       }
     ],
     when: answers => answers.application === 'pc',
@@ -76,14 +80,14 @@ module.exports = [
         value: 'element-ui'
       }
     ],
-    when: answers => answers.application === 'pc' && answers.template !== 'mgt',
+    when: answers => answers.application === 'pc' && !answers.template.startsWith('mgt'),
     default: 'none'
   },
   {
     name: 'modulesName',
     type: 'input',
     message: '请填写模块名, 可选',
-    when: answers => answers.application === 'pc' && answers.template === 'mgt',
+    when: answers => answers.application === 'pc' && answers.template.startsWith('mgt'),
     default: ''
   }
 ]

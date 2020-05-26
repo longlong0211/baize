@@ -1,0 +1,5 @@
+<%_ if (options.modulesName) { _%>
+VUE_APP_PUBLIC_PATH=/<%= options.modulesName %>/fd
+<%_} else {_%>
+VUE_APP_PUBLIC_PATH=/demo
+<%_ } _%>

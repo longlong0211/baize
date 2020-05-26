@@ -3,6 +3,9 @@ module.exports = (api, options) => {
   case 'mgt':
     require('./mgt.js')(api, options)
     break
+  case 'mgt2':
+    require('./mgt2.js')(api, options)
+    break
   default:
     break
   }

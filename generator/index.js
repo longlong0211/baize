@@ -21,7 +21,7 @@ module.exports = (api, options, rootOptions) => {
     }
   })
 
-  if (options['ui-framework'] === 'element-ui' || options.template === 'mgt') {
+  if (options['ui-framework'] === 'element-ui' || options.template.startsWith('mgt')) {
     require('./element.js')(api, options)
   }
 
