@@ -59,7 +59,7 @@ const routes = [
 export default function createRouter () {
   const router = new VueRouter({
     mode: 'history',
-    base: window.__POWERED_BY_QIANKUN__ ? `/portal${process.env.PUBLIC_PATH}` : process.env.PUBLIC_PATH,
+    base: window.__POWERED_BY_QIANKUN__ ? `/portal${process.env.VUE_APP_PUBLIC_PATH}` : process.env.VUE_APP_PUBLIC_PATH,
     routes
   })
 
