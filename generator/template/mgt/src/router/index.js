@@ -81,7 +81,7 @@ const routes = [
 export default function createRouter () {
   const router = new VueRouter({
     mode: 'history',
-    base: window.__POWERED_BY_QIANKUN__ ? '/portal/jiahuiMgt' : process.env.BASE_URL,
+    base: window.__POWERED_BY_QIANKUN__ ? `/portal${process.env.BASE_URL}` : process.env.BASE_URL,
     routes
   })
 

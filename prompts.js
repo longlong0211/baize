@@ -76,7 +76,14 @@ module.exports = [
         value: 'element-ui'
       }
     ],
-    when: answers => answers.application === 'pc',
+    when: answers => answers.application === 'pc' && answers.template !== 'mgt',
     default: 'none'
+  },
+  {
+    name: 'modulesName',
+    type: 'input',
+    message: '请填写模块名, 可选',
+    when: answers => answers.application === 'pc' && answers.template === 'mgt',
+    default: ''
   }
 ]

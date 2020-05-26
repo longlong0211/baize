@@ -1,1 +1,5 @@
-VUE_APP_BASE_URL=/jiahuiMgt-vue
+<%_ if (options.modulesName) { _%>
+VUE_APP_BASE_URL=/<%= options.modulesName %>
+<%_} else {_%>
+VUE_APP_BASE_URL=/
+<%_ } _%>

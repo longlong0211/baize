@@ -21,7 +21,7 @@ module.exports = (api, options, rootOptions) => {
     }
   })
 
-  if (options['ui-framework'] === 'element-ui') {
+  if (options['ui-framework'] === 'element-ui' || options.template === 'mgt') {
     require('./element.js')(api, options)
   }
 
