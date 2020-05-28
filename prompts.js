@@ -48,6 +48,10 @@ module.exports = [
       {
         name: 'Mgt2管理后台子应用',
         value: 'mgt2'
+      },
+      {
+        name: 'SCRM(暂时不可用)',
+        value: 'scrm'
       }
     ],
     when: answers => answers.application === 'pc',

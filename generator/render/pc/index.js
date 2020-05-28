@@ -1,12 +1,9 @@
 module.exports = (api, options) => {
   switch (options.template) {
-  case 'mgt':
-    require('./mgt.js')(api, options)
-    break
-  case 'mgt2':
-    require('./mgt2.js')(api, options)
+  case 'none':
     break
   default:
+    require(`./${options.template}`)(api, options)
     break
   }
 }
