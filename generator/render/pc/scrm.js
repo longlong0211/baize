@@ -143,15 +143,10 @@ module.exports = (api, options) => {
 
   api.onCreateComplete(async () => {
     await new Promise((resolve, reject) => {
-      const installRoadhog = require('child_process').spawn('npm', ['i', 'roadhog@2.5.0-beta.4', '-D'])
-      installRoadhog.on('data', data => console.log(data))
-      installRoadhog.on('error', error => {
-        console.error(error)
-        reject(error)
-      })
-      installRoadhog.on('close', code => {
-        resolve()
-      })
+      const installRoadhog = require('child_process').exec(`cd ${api.rootOptions.projectName} && npm i roadhog@2.5.0-beta.4 -D`)
+      installRoadhog.stdout.on('data', data => console.log(data))
+      installRoadhog.stderr.on('data', error => console.error(error))
+      installRoadhog.on('close', resolve)
     })
   })
 }
