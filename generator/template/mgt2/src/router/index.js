@@ -86,7 +86,7 @@ export default function createRouter () {
       return
     }
     try {
-      store.commit('app/pushTagView', { fullPath: to.fullPath, title: getResourceTitleByRoute(to) })
+      !window.__POWERED_BY_QIANKUN__ && store.commit('app/pushTagView', { fullPath: to.fullPath, title: getResourceTitleByRoute(to) })
     } catch (e) {}
   })
 
